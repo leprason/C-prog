@@ -1,0 +1,197 @@
+#include <stdio.h>
+
+int minim(int a,int b, int c){
+    if(a<b){
+        if(a<c){
+            return a;
+        }
+        else{
+            return c;
+        }
+    }
+    else{
+        if(b<c){
+            return b;
+        }
+        else{
+            return c;
+        }
+    }
+}
+void abs(int min){
+    if(min<0){
+        printf("The absolute value of the minimum is : %d.\n", min);
+    }
+}
+void fact(int a){
+    if(a<0){
+        printf("Invalid input, try again with a positive number.\n");
+    }
+    else if(a==0){
+        printf("The factorial of your number is : 1.\n");
+    }
+    else{
+        int b=a;
+        for(int i=1; i<b; i++){
+            a=a*i;
+        }
+        printf("The factorial of your numer is : %d.\n", a);
+    }
+}
+
+int main(){
+    printf("Make a choice between T, M, F and S : ");
+    char z;
+    scanf("%c\n", &z);
+
+    if(z=='T'){
+        int array[20], sum, c=0, p=0;
+        float avg;
+        printf("Enter 20 int elements\n");
+        for(int i=0; i<20; i++){
+            scanf("%d", &array[i]);
+            if(array[i]>0){
+                p++;
+            }
+            if(array[i]%2==0){
+                sum+=array[i];
+                c++;
+            }
+        }
+        int array2[p], max=array[0], min=array[0], k=0;
+        avg=sum/c;
+        printf("[");
+        for(int i=0; i<20; i++){
+            printf("%d ", array[i]);
+            if(max<array[i]){
+                max=array[i];
+            }
+            if(min>array[i]){
+                min=array[i];
+            }
+            if(array[i]>0){
+                array2[k]=array[i];
+                k++;
+            }
+        }
+        printf("]\n");
+        printf("The maximum value is : %d.\nThe minimum valus is : %d.\nThe average of the even numbers is : %f.\n", max, min, avg);
+        for(int i=0; i<p; i++){
+            if(array2[i]%3==0){
+                printf("%d in position %d is divisible by 3.\n", array2[i], i);
+            }
+        }
+    }
+    else if(z=='M'){
+        int array[5][5], f=0, oc=0, pc=0, fc=0;
+        printf("Enter the values of your 5x5 matrix :\n");
+        for(int i=0; i<5; i++){
+            for(int j=0; j<5; j++){
+                scanf("%d", &array[i][j]);
+                if(array[i][j]==5){
+                    f++;
+                }
+                if(array[i][j]%2!=0){
+                    oc++;
+                }
+                if(array[i][j]>0){
+                    pc++;
+                }
+                if(array[i][j]%5==0){
+                    fc++;
+                }
+            }
+        }
+        int odd[oc], pos[pc], fiv[fc], g=0, h=0, l=0;
+        for(int i=0; i<5; i++){
+            for(int j=0; j<5; j++){
+                if(array[i][j]%2==0){
+                    printf("%d in the position %d %d is even.\n", array[i][j], i, j);
+                }
+                if(array[i][j]%2!=0){
+                    odd[g]=array[i][j];
+                    g++;
+                }
+                if(array[i][j]>0){
+                    pos[h]=array[i][j];
+                    h++;
+                }
+                if(array[i][j]%5==0){
+                    fiv[l]=array[i][j];
+                    l++;
+                }
+            }
+        }
+        printf("There are %d occurences of the value 5.\n", f);
+
+        printf("These are the odd elements that you have entered :\n");
+        printf("[");
+        for(int i=0; i<oc; i++){
+            printf("%d ", odd[i]);
+        }
+        printf("]\n");
+
+        printf("These are the strictly positive elements that you have entered :\n");
+        printf("[");
+        for(int i=0; i<pc; i++){
+            printf("%d ", pos[i]);
+        }
+        printf("]\n");
+
+        printf("These are the elements divisible by 5 that you have entered :\n");
+        printf("[");
+        for(int i=0; i<fc; i++){
+            printf("%d ", fiv[i]);
+        }
+        printf("]\n");
+
+        printf("These are the odd elements divisible by 5 that you have entered :\n");
+        printf("[");
+        for(int i=0; i<oc; i++){
+            if(odd{i}%5==0){
+                printf("%d ", odd[i]);
+            }
+        }
+        printf("]\n");
+    }
+    else if(z=='F'){
+        printf("Enter three int numbers\n");
+        int a, b, c, min, f;
+        scanf("%d, %d, %d", &a, &b, &c);
+        min=minim(a, b, c);
+        abs(min);
+        printf("Enter a fourth number : ");
+        scanf("%d", &f);
+        fact(f);
+    }
+    else if(z=='S'){
+        printf("Enter as many characters as you want, to stop, press '/'.\n");
+        int s=0, x=0, v=0;
+        char a;
+        while(a!='/'){
+            scanf("%c", &a);
+            if(a=='7'){
+                s++;
+            }
+            if(a=='X'){
+                x++;
+            }
+            if((a=='A')||(a=='a')||(a=='E')||(a=='e')||(a=='I')||(a=='i')||(a=='O')||(a=='o')||(a=='U')||(a=='u')||(a=='Y')||(a=='y')){
+                v++;
+            }
+            if(a=='0'){
+                printf("Your input is 0.\n");
+            }
+            if(a>='0'){
+                int d;
+                d=a;
+                for(int i=0; i<11; i++){
+                    printf("%dx%d=%d\n", d, i, d*i);
+                }
+            }
+        }
+    }
+    else{
+        printf("Invalid input, try again!\n");
+    }
+}
